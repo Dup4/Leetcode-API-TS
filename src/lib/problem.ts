@@ -25,6 +25,7 @@ class Problem {
 
         public sampleTestCase?: string,
         public content?: string,
+        public translatedContent?: string,
         public codeSnippets?: Array<any>
     ) {}
 
@@ -43,6 +44,7 @@ class Problem {
                         stats
                         status
                         content
+                        ${}
                         topicTags {
                             name
                         }
@@ -59,6 +61,7 @@ class Problem {
                 titleSlug: this.slug,
             },
         });
+
         const question = response.question;
         this.id = Number(question.questionId);
         this.title = question.title;
@@ -77,7 +80,9 @@ class Problem {
 
         this.sampleTestCase = question.sampleTestCase;
         this.content = question.content;
+        this.translatedContent = question.translatedContent;
         this.codeSnippets = question.codeSnippets;
+
         return this;
     }
 
@@ -130,6 +135,7 @@ class Problem {
                 );
             });
         }
+
         return submissions;
     }
 
@@ -145,6 +151,7 @@ class Problem {
                 typed_code: code,
             },
         });
+
         return new Submission(JSON.parse(response).submission_id);
     }
 }

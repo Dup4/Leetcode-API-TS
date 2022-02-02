@@ -45,10 +45,12 @@ class Leetcode {
             response.headers["set-cookie"],
             "csrftoken"
         );
+
         // Leetcode CN return null here, but it's does not matter
         let credit: Credit = {
             csrfToken: token,
         };
+
         Helper.setCredit(credit);
 
         // then login
@@ -80,6 +82,7 @@ class Leetcode {
                 throw new Error("Login Fail");
             }
         }
+
         return credit;
     }
 
@@ -150,6 +153,7 @@ class Leetcode {
                 slug: tag,
             },
         });
+
         const problems: Array<Problem> = response.topicTag.questions.map(
             (p: any) => {
                 const stat: any = JSON.parse(p.stats);
@@ -172,6 +176,7 @@ class Leetcode {
                 );
             }
         );
+
         return problems;
     }
 }
