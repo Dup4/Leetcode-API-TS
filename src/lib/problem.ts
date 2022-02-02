@@ -83,7 +83,7 @@ class Problem {
 
     async getSubmissions(): Promise<Array<Submission>> {
         const submissions: Array<Submission> = [];
-        let offet = 0;
+        let offset = 0;
         const limit = 20;
         let hasNext = true;
         while (hasNext) {
@@ -107,7 +107,7 @@ class Problem {
                 }
                 `,
                 variables: {
-                    offset: offet,
+                    offset: offset,
                     limit: limit,
                     questionSlug: this.slug,
                 },
@@ -115,7 +115,7 @@ class Problem {
 
             hasNext = response.submissionList.hasNext;
             const submission: Array<any> = response.submissionList.submissions;
-            offet += submission.length;
+            offset += submission.length;
             submission.map((s) => {
                 submissions.push(
                     new Submission(
@@ -139,7 +139,9 @@ class Problem {
             method: "POST",
             body: {
                 lang: lang,
+                // eslint-disable-next-line @typescript-eslint/camelcase
                 question_id: this.id,
+                // eslint-disable-next-line @typescript-eslint/camelcase
                 typed_code: code,
             },
         });
