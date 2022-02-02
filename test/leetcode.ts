@@ -19,7 +19,7 @@ describe("# Leetcode", () => {
                     : EndPoint.US
             );
         });
-        it("Should be intance of Leetcode", () => {
+        it("Should be instance of Leetcode", () => {
             expect(leetcode).to.instanceOf(Leetcode);
         });
         it("Should has session", () => {
