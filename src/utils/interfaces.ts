@@ -22,7 +22,7 @@ interface Credit {
 enum ProblemStatus {
     "Accept",
     "Not Accept",
-    "Not Start"
+    "Not Start",
 }
 
 enum ProblemDifficulty {
@@ -53,5 +53,13 @@ interface Uris {
     submission: string;
 }
 
-export { HttpRequestOptions, GraphQLRequestOptions, Credit, ProblemStatus, ProblemDifficulty, SubmissionStatus, EndPoint, Uris, };
-
+export {
+    HttpRequestOptions,
+    GraphQLRequestOptions,
+    Credit,
+    ProblemStatus,
+    ProblemDifficulty,
+    SubmissionStatus,
+    EndPoint,
+    Uris,
+};

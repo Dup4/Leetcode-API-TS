@@ -1,10 +1,14 @@
-import { expect } from 'chai';
-import Dotenv from 'dotenv';
-import 'mocha';
-import Leetcode from '../src';
-import Problem from '../src/lib/problem';
-import Submission from '../src/lib/submission';
-import { EndPoint, ProblemStatus, SubmissionStatus } from '../src/utils/interfaces';
+import { expect } from "chai";
+import Dotenv from "dotenv";
+import "mocha";
+import Leetcode from "../src";
+import Problem from "../src/lib/problem";
+import Submission from "../src/lib/submission";
+import {
+    EndPoint,
+    ProblemStatus,
+    SubmissionStatus,
+} from "../src/utils/interfaces";
 
 describe("# Submission", async function () {
     this.enableTimeouts(false);
@@ -14,13 +18,16 @@ describe("# Submission", async function () {
         const leetcode: Leetcode = await Leetcode.build(
             process.env.LEETCODE_USERNAME || "",
             process.env.LEETCODE_PASSWORD || "",
-            process.env.LEETCODE_ENDPOINT === "CN" ? EndPoint.CN : EndPoint.US,
+            process.env.LEETCODE_ENDPOINT === "CN" ? EndPoint.CN : EndPoint.US
         );
         const problems: Array<Problem> = await leetcode.getAllProblems();
-        const acceptedProblems: Array<Problem> = problems.filter((p: Problem) => {
-            return p.status === ProblemStatus.Accept;
-        });
-        const submissions: Array<Submission> = await acceptedProblems[0].getSubmissions();
+        const acceptedProblems: Array<Problem> = problems.filter(
+            (p: Problem) => {
+                return p.status === ProblemStatus.Accept;
+            }
+        );
+        const submissions: Array<Submission> =
+            await acceptedProblems[0].getSubmissions();
         submission = submissions[0];
         await submission.detail();
     });

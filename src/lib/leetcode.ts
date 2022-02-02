@@ -1,10 +1,9 @@
-import { StatusCodeError } from 'request-promise-native/errors';
-import Helper from '../utils/helper';
-import { Credit, EndPoint, Uris } from '../utils/interfaces';
-import Problem from './problem';
+import { StatusCodeError } from "request-promise-native/errors";
+import Helper from "../utils/helper";
+import { Credit, EndPoint, Uris } from "../utils/interfaces";
+import Problem from "./problem";
 
 class Leetcode {
-
     session?: string;
     csrfToken: string;
 
@@ -25,7 +24,11 @@ class Leetcode {
         };
     }
 
-    static async build(username: string, password: string, endpoint: EndPoint): Promise<Leetcode> {
+    static async build(
+        username: string,
+        password: string,
+        endpoint: EndPoint
+    ): Promise<Leetcode> {
         Helper.switchEndPoint(endpoint);
         const credit: Credit = await this.login(username, password);
         Helper.setCredit(credit);
@@ -38,10 +41,13 @@ class Leetcode {
             url: Leetcode.uris.login,
             resolveWithFullResponse: true,
         });
-        const token: string = Helper.parseCookie(response.headers['set-cookie'], "csrftoken");
+        const token: string = Helper.parseCookie(
+            response.headers["set-cookie"],
+            "csrftoken"
+        );
         // Leetcode CN return null here, but it's does not matter
         let credit: Credit = {
-            csrfToken: token
+            csrfToken: token,
         };
         Helper.setCredit(credit);
 
@@ -57,8 +63,14 @@ class Leetcode {
                 },
                 resolveWithFullResponse: true,
             });
-            const session = Helper.parseCookie(_response.headers['set-cookie'], "LEETCODE_SESSION");
-            const csrfToken = Helper.parseCookie(_response.headers['set-cookie'], "csrftoken");
+            const session = Helper.parseCookie(
+                _response.headers["set-cookie"],
+                "LEETCODE_SESSION"
+            );
+            const csrfToken = Helper.parseCookie(
+                _response.headers["set-cookie"],
+                "csrftoken"
+            );
             credit = {
                 session: session,
                 csrfToken: csrfToken,
@@ -80,7 +92,7 @@ class Leetcode {
                     username
                 }
             }
-            `
+            `,
         });
         return response.user;
     }
@@ -90,25 +102,27 @@ class Leetcode {
             url: Leetcode.uris.problemsAll,
         });
         response = JSON.parse(response);
-        const problems: Array<Problem> = response.stat_status_pairs.map((p: any) => {
-            return new Problem(
-                p.stat.question__title_slug,
-                p.stat.question_id,
-                p.stat.question__title,
-                Helper.difficultyMap(p.difficulty.level),
-                p.is_favor,
-                p.paid_only,
-                undefined,
-                undefined,
-                Helper.statusMap(p.status),
-                undefined,
-                p.stat.total_acs,
-                p.stat.total_submitted,
-                undefined,
-                undefined,
-                undefined
-            );
-        });
+        const problems: Array<Problem> = response.stat_status_pairs.map(
+            (p: any) => {
+                return new Problem(
+                    p.stat.question__title_slug,
+                    p.stat.question_id,
+                    p.stat.question__title,
+                    Helper.difficultyMap(p.difficulty.level),
+                    p.is_favor,
+                    p.paid_only,
+                    undefined,
+                    undefined,
+                    Helper.statusMap(p.status),
+                    undefined,
+                    p.stat.total_acs,
+                    p.stat.total_submitted,
+                    undefined,
+                    undefined,
+                    undefined
+                );
+            }
+        );
         return problems;
     }
 
@@ -134,31 +148,32 @@ class Leetcode {
             `,
             variables: {
                 slug: tag,
+            },
+        });
+        const problems: Array<Problem> = response.topicTag.questions.map(
+            (p: any) => {
+                const stat: any = JSON.parse(p.stats);
+                return new Problem(
+                    p.titleSlug,
+                    p.questionId,
+                    p.title,
+                    stat.title,
+                    undefined,
+                    p.isPaidOnly,
+                    undefined,
+                    undefined,
+                    Helper.statusMap(p.status),
+                    p.topicTags.map((t: any) => t.slug),
+                    stat.totalAcceptedRaw,
+                    stat.totalSubmissionRaw,
+                    undefined,
+                    undefined,
+                    undefined
+                );
             }
-        });
-        const problems: Array<Problem> = response.topicTag.questions.map((p: any) => {
-            const stat: any = JSON.parse(p.stats);
-            return new Problem(
-                p.titleSlug,
-                p.questionId,
-                p.title,
-                stat.title,
-                undefined,
-                p.isPaidOnly,
-                undefined,
-                undefined,
-                Helper.statusMap(p.status),
-                p.topicTags.map((t: any) => t.slug),
-                stat.totalAcceptedRaw,
-                stat.totalSubmissionRaw,
-                undefined,
-                undefined,
-                undefined
-            );
-        });
+        );
         return problems;
     }
-
 }
 
 export default Leetcode;

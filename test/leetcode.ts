@@ -1,9 +1,9 @@
-import { expect } from 'chai';
-import Dotenv from 'dotenv';
-import 'mocha';
-import Leetcode from '../src';
-import Problem from '../src/lib/problem';
-import { EndPoint } from '../src/utils/interfaces';
+import { expect } from "chai";
+import Dotenv from "dotenv";
+import "mocha";
+import Leetcode from "../src";
+import Problem from "../src/lib/problem";
+import { EndPoint } from "../src/utils/interfaces";
 
 describe("# Leetcode", () => {
     describe("Correct Account", async function () {
@@ -14,7 +14,9 @@ describe("# Leetcode", () => {
             leetcode = await Leetcode.build(
                 process.env.LEETCODE_USERNAME || "",
                 process.env.LEETCODE_PASSWORD || "",
-                process.env.LEETCODE_ENDPOINT === "CN" ? EndPoint.CN : EndPoint.US,
+                process.env.LEETCODE_ENDPOINT === "CN"
+                    ? EndPoint.CN
+                    : EndPoint.US
             );
         });
         it("Should be intance of Leetcode", () => {
@@ -33,13 +35,17 @@ describe("# Leetcode", () => {
         it("Could get all problems", async () => {
             const problems: Array<Problem> = await leetcode.getAllProblems();
             expect(problems.length).least(1000);
-            const problem: Problem = problems[Math.floor(Math.random() * problems.length)];
+            const problem: Problem =
+                problems[Math.floor(Math.random() * problems.length)];
             expect(problem.slug).to.not.null;
         });
         it("Could get problems by tag", async () => {
-            const problems: Array<Problem> = await leetcode.getProblemsByTag("array");
+            const problems: Array<Problem> = await leetcode.getProblemsByTag(
+                "array"
+            );
             expect(problems.length).least(150);
-            const problem: Problem = problems[Math.floor(Math.random() * problems.length)];
+            const problem: Problem =
+                problems[Math.floor(Math.random() * problems.length)];
             expect(problem.slug).to.not.null;
         });
     });

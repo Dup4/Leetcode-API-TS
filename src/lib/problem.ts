@@ -3,7 +3,6 @@ import { ProblemDifficulty, ProblemStatus, Uris } from "../utils/interfaces";
 import Submission from "./submission";
 
 class Problem {
-
     static uris: Uris;
 
     static setUris(uris: Uris): void {
@@ -26,8 +25,8 @@ class Problem {
 
         public sampleTestCase?: string,
         public content?: string,
-        public codeSnippets?: Array<any>,
-    ) { }
+        public codeSnippets?: Array<any>
+    ) {}
 
     async detail(): Promise<Problem> {
         const response = await Helper.GraphQLRequest({
@@ -58,7 +57,7 @@ class Problem {
             `,
             variables: {
                 titleSlug: this.slug,
-            }
+            },
         });
         const question = response.question;
         this.id = Number(question.questionId);
@@ -111,22 +110,24 @@ class Problem {
                     offset: offet,
                     limit: limit,
                     questionSlug: this.slug,
-                }
+                },
             });
 
             hasNext = response.submissionList.hasNext;
             const submission: Array<any> = response.submissionList.submissions;
             offet += submission.length;
-            submission.map(s => {
-                submissions.push(new Submission(
-                    Number(s.id),
-                    s.isPending,
-                    s.lang,
-                    s.memory,
-                    s.runtime,
-                    Helper.submissionStatusMap(s.statusDisplay),
-                    Number(s.timestamp),
-                ));
+            submission.map((s) => {
+                submissions.push(
+                    new Submission(
+                        Number(s.id),
+                        s.isPending,
+                        s.lang,
+                        s.memory,
+                        s.runtime,
+                        Helper.submissionStatusMap(s.statusDisplay),
+                        Number(s.timestamp)
+                    )
+                );
             });
         }
         return submissions;
@@ -138,9 +139,9 @@ class Problem {
             method: "POST",
             body: {
                 lang: lang,
-                "question_id": this.id,
-                "typed_code": code,
-            }
+                question_id: this.id,
+                typed_code: code,
+            },
         });
         return new Submission(JSON.parse(response).submission_id);
     }

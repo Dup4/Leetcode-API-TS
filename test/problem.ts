@@ -1,10 +1,14 @@
-import { expect } from 'chai';
-import Dotenv from 'dotenv';
-import 'mocha';
-import Leetcode from '../src';
-import Problem from '../src/lib/problem';
-import Submission from '../src/lib/submission';
-import { EndPoint, ProblemDifficulty, ProblemStatus } from '../src/utils/interfaces';
+import { expect } from "chai";
+import Dotenv from "dotenv";
+import "mocha";
+import Leetcode from "../src";
+import Problem from "../src/lib/problem";
+import Submission from "../src/lib/submission";
+import {
+    EndPoint,
+    ProblemDifficulty,
+    ProblemStatus,
+} from "../src/utils/interfaces";
 
 describe("# Problem", async function () {
     this.enableTimeouts(false);
@@ -14,7 +18,7 @@ describe("# Problem", async function () {
         await Leetcode.build(
             process.env.LEETCODE_USERNAME || "",
             process.env.LEETCODE_PASSWORD || "",
-            process.env.LEETCODE_ENDPOINT === "CN" ? EndPoint.CN : EndPoint.US,
+            process.env.LEETCODE_ENDPOINT === "CN" ? EndPoint.CN : EndPoint.US
         );
         await problem.detail();
     });
