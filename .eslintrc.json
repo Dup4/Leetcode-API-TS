@@ -13,10 +13,6 @@
     },
     "rules": {
         "semi": "error",
-        "@typescript-eslint/indent": [
-            "error",
-            4
-        ],
         "eqeqeq": [
             "error",
             "always"

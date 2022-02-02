@@ -1,5 +1,10 @@
 import Helper from "../utils/helper";
-import { ProblemDifficulty, ProblemStatus, Uris } from "../utils/interfaces";
+import {
+    EndPoint,
+    ProblemDifficulty,
+    ProblemStatus,
+    Uris,
+} from "../utils/interfaces";
 import Submission from "./submission";
 
 class Problem {
@@ -44,7 +49,11 @@ class Problem {
                         stats
                         status
                         content
-                        ${}
+                        ${
+                            Helper.endpoint === EndPoint.CN
+                                ? "translatedContent"
+                                : ""
+                        }
                         topicTags {
                             name
                         }

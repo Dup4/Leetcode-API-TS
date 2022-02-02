@@ -4,6 +4,7 @@ import "mocha";
 import Leetcode from "../src";
 import Problem from "../src/lib/problem";
 import Submission from "../src/lib/submission";
+import Helper from "../src/utils/helper";
 import {
     EndPoint,
     ProblemDifficulty,
@@ -50,6 +51,9 @@ describe("# Problem", async function () {
         expect(problem.totalSubmission).to.be.a("number");
         expect(problem.sampleTestCase).to.be.a("string");
         expect(problem.content).to.be.a("string");
+        if (Helper.endpoint === EndPoint.CN) {
+            expect(problem.translatedContent).to.be.a("string");
+        }
         expect(problem.codeSnippets).to.be.an("array");
     });
     it("Could get submissions", async () => {

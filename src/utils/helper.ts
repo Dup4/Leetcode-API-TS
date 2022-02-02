@@ -18,6 +18,7 @@ import {
 class Helper {
     static credit: Credit;
     static uris: Uris;
+    static endpoint: EndPoint;
 
     static setCredit(credit: Credit): void {
         Helper.credit = credit;
@@ -25,6 +26,10 @@ class Helper {
 
     static setUris(uris: Uris): void {
         Helper.uris = uris;
+    }
+
+    static setEndpoint(endpoint: EndPoint): void {
+        Helper.endpoint = endpoint;
     }
 
     static parseCookie(cookies: Array<string>, key: string): string {
@@ -144,6 +149,8 @@ class Helper {
     }
 
     static switchEndPoint(endPoint: EndPoint): void {
+        Helper.setEndpoint(endPoint);
+
         if (endPoint === EndPoint.US) {
             const uris: Uris = Config.uri.us;
             Helper.setUris(uris);
