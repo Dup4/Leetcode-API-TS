@@ -33,7 +33,7 @@
 
     // Show problem content, test case, code snippet etc
     const content: string = problem.content;
-    const testCase: string = problem.simpleTestCase;
+    const testCase: string = problem.sampleTestCase;
     const codeSnippets: Array<any> = problem.codeSnippets;
 
     // submit your answer
