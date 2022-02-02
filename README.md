@@ -1,6 +1,6 @@
 # Leetcode API
 > Leetcode API written with TypeScript, fully support async.
-> 
+>
 > Thanks for the excellent work for [leetcode-cli](https://github.com/skygragon/leetcode-cli) project! ❤️
 
 ![GitHub package.json dynamic](https://img.shields.io/github/package-json/keywords/realVEct0r/leetcode-api)
@@ -19,7 +19,7 @@
     // Login 
     const leetcode: Leetcode = await Leetcode.build(
         "your username",
-        "yout password",
+        "your password",
         EndPoint.US     // or EndPoint.CN
     );
 
@@ -31,13 +31,13 @@
 
     // Show problem content, test case, code snippet etc
     const content: string = problem.content;
-    const testcase: string = problem.simpleTestCase;
+    const testCase: string = problem.simpleTestCase;
     const codeSnippets: Array<any> = problem.codeSnippets;
 
     // submit your answer
     problem.submit("your code language", "your code here");
 
-    // Get All problems' base infomation
+    // Get All problems' base information
     const problems: Array<Problem> = await leetcode.getAllProblems();
 
     // Filter problems by status, difficulty, etc
