@@ -23,6 +23,7 @@ class Submission {
         const response = await Helper.HttpRequest({
             url: Submission.uris.submission.replace("$id", this.id.toString()),
         });
+
         this.lang = response.match(/getLangDisplay:\s'([^']*)'/)[1];
         this.memory = response.match(/memory:\s'([^']*)'/)[1];
         this.runtime = response.match(/runtime:\s'([^']*)'/)[1];
@@ -32,6 +33,7 @@ class Submission {
         this.code = JSON.parse(
             `"${response.match(/submissionCode:\s'([^']*)'/)[1]}"`
         );
+
         // TODO : add submit time parse
         // <div id="submitted-time">Submitted: <strong><span id="result_date">33 minutes ago</span></strong></div>
         return this;

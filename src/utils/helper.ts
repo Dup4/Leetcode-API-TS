@@ -36,12 +36,14 @@ class Helper {
         if (!cookies) {
             return "";
         }
+
         for (let ix = 0; ix !== cookies.length; ++ix) {
             const result = cookies[ix].match(new RegExp(`${key}=(.+?);`));
             if (result) {
                 return result[1] || "";
             }
         }
+
         return "";
     }
 
@@ -145,6 +147,7 @@ class Helper {
                 "X-CSRFToken": Helper.credit.csrfToken,
             },
         });
+
         return await client.request(options.query, options.variables || {});
     }
 
