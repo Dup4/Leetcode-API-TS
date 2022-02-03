@@ -54,8 +54,8 @@ class Leetcode {
 
         Helper.setCredit(credit);
 
-        // then login
         try {
+            // then login
             const _response = await Helper.HttpRequest({
                 method: "POST",
                 url: Leetcode.uris.login,
@@ -70,10 +70,12 @@ class Leetcode {
                 _response.headers["set-cookie"],
                 "LEETCODE_SESSION"
             );
+
             const csrfToken = Helper.parseCookie(
                 _response.headers["set-cookie"],
                 "csrftoken"
             );
+
             credit = {
                 session: session,
                 csrfToken: csrfToken,

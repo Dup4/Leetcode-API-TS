@@ -135,11 +135,10 @@ class Problem {
                 submissions.push(
                     new Submission(
                         Number(s.id),
-                        s.isPending,
                         s.lang,
                         s.memory,
                         s.runtime,
-                        Helper.submissionStatusMap(s.statusDisplay),
+                        s.statusDisplay,
                         Number(s.timestamp)
                     )
                 );

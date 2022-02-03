@@ -1,5 +1,5 @@
 import Helper from "../utils/helper";
-import { SubmissionStatus, Uris } from "../utils/interfaces";
+import { Uris } from "../utils/interfaces";
 
 class Submission {
     static uris: Uris;
@@ -10,32 +10,72 @@ class Submission {
 
     constructor(
         public id: number,
-        public isPending?: string,
         public lang?: string,
         public memory?: string,
         public runtime?: string,
-        public status?: SubmissionStatus,
+        public statusDisplay?: string,
         public timestamp?: number,
         public code?: string
     ) {}
 
     async detail(): Promise<Submission> {
-        const response = await Helper.HttpRequest({
-            url: Submission.uris.submission.replace("$id", this.id.toString()),
+        const response = await Helper.GraphQLRequest({
+            query: `
+                query mySubmissionDetail($id: ID!) {
+                    submissionDetail(submissionId: $id) {
+                    id
+                    code
+                    runtime
+                    memory
+                    rawMemory
+                    statusDisplay
+                    timestamp
+                    lang
+                    passedTestCaseCnt
+                    totalTestCaseCnt
+                    sourceUrl
+                    question {
+                        titleSlug
+                        title
+                        translatedTitle
+                        questionId
+                        __typename
+                    }
+                    ... on GeneralSubmissionNode {
+                        outputDetail {
+                        codeOutput
+                        expectedOutput
+                        input
+                        compileError
+                        runtimeError
+                        lastTestcase
+                        __typename
+                        }
+                        __typename
+                    }
+                    submissionComment {
+                        comment
+                        flagType
+                        __typename
+                    }
+                    __typename
+                    }
+                }
+            `,
+            variables: {
+                id: this.id.toString(),
+            },
         });
 
-        this.lang = response.match(/getLangDisplay:\s'([^']*)'/)[1];
-        this.memory = response.match(/memory:\s'([^']*)'/)[1];
-        this.runtime = response.match(/runtime:\s'([^']*)'/)[1];
-        this.status = Helper.submissionStatusMap(
-            response.match(/parseInt\('(\d+)', 10/)[1]
-        );
-        this.code = JSON.parse(
-            `"${response.match(/submissionCode:\s'([^']*)'/)[1]}"`
-        );
+        const submissionDetail = response.submissionDetail;
 
-        // TODO : add submit time parse
-        // <div id="submitted-time">Submitted: <strong><span id="result_date">33 minutes ago</span></strong></div>
+        this.lang = submissionDetail.lang;
+        this.memory = submissionDetail.memory;
+        this.runtime = submissionDetail.runtime;
+        this.statusDisplay = submissionDetail.statusDisplay;
+        this.timestamp = submissionDetail.timestamp;
+        this.code = submissionDetail.code;
+
         return this;
     }
 }

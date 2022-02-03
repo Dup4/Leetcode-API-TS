@@ -1,6 +1,7 @@
 import { GraphQLClient } from "graphql-request";
 import Request from "request-promise-native";
 import Config from "../lib/config";
+import Contest from "../lib/contest";
 import Leetcode from "../lib/leetcode";
 import Problem from "../lib/problem";
 import Submission from "../lib/submission";
@@ -154,19 +155,20 @@ class Helper {
     static switchEndPoint(endPoint: EndPoint): void {
         Helper.setEndpoint(endPoint);
 
-        if (endPoint === EndPoint.US) {
-            const uris: Uris = Config.uri.us;
-            Helper.setUris(uris);
-            Leetcode.setUris(uris);
-            Problem.setUris(uris);
-            Submission.setUris(uris);
-        } else if (endPoint === EndPoint.CN) {
-            const uris: Uris = Config.uri.cn;
-            Helper.setUris(uris);
-            Leetcode.setUris(uris);
-            Problem.setUris(uris);
-            Submission.setUris(uris);
-        }
+        const uris = ((): Uris => {
+            switch (endPoint) {
+                case EndPoint.US:
+                    return Config.uri.us;
+                case EndPoint.CN:
+                    return Config.uri.cn;
+            }
+        })();
+
+        Helper.setUris(uris);
+        Leetcode.setUris(uris);
+        Problem.setUris(uris);
+        Contest.setUris(uris);
+        Submission.setUris(uris);
     }
 }
 

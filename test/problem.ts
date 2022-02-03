@@ -65,7 +65,7 @@ describe("# Problem", async function () {
         const submission = await problem.submit("cpp", "test code here");
         setTimeout(async () => {
             await submission.detail();
-            expect(submission.status).to.be.a("number");
+            expect(submission.statusDisplay).to.be.a("string");
         }, 5000);
     });
 });

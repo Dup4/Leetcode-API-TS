@@ -25,6 +25,36 @@ export interface CodeSnippet {
     code: string;
 }
 
+export interface ContestInfo {
+    id: number;
+    title: string;
+    title_slug: string;
+    description: string;
+    duration: number;
+    start_time: number;
+    is_virtual: boolean;
+    origin_start_time: number;
+    is_private: boolean;
+    related_contest_title: string | null;
+}
+
+export interface SimpleProblemInfoInContest {
+    id: number;
+    question_id: number;
+    credit: number;
+    title: string;
+    english_title: string;
+    title_slug: string;
+    category_slug: string;
+}
+
+export interface Company {
+    name: string;
+    description: string;
+    logo: string;
+    slug: string;
+}
+
 export enum ProblemStatus {
     "Accept",
     "Not Accept",
@@ -55,6 +85,7 @@ export interface Uris {
     graphql: string;
     problemsAll: string;
     problem: string;
+    contestInfo: string;
     submit: string;
     submission: string;
 }

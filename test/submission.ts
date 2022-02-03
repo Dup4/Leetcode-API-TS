@@ -4,15 +4,12 @@ import "mocha";
 import Leetcode from "../src";
 import Problem from "../src/lib/problem";
 import Submission from "../src/lib/submission";
-import {
-    EndPoint,
-    ProblemStatus,
-    SubmissionStatus,
-} from "../src/utils/interfaces";
+import { EndPoint, ProblemStatus } from "../src/utils/interfaces";
 
 describe("# Submission", async function () {
     this.enableTimeouts(false);
     let submission: Submission;
+
     before(async () => {
         Dotenv.config();
         const leetcode: Leetcode = await Leetcode.build(
@@ -38,16 +35,10 @@ describe("# Submission", async function () {
 
     it("Should has base field", () => {
         expect(submission.id).to.be.an("number");
-        expect(submission.isPending).to.be.a("string");
         expect(submission.lang).to.be.a("string");
         expect(submission.memory).to.be.a("string");
         expect(submission.runtime).to.be.a("string");
-        expect(submission.status).to.be.oneOf([
-            SubmissionStatus["Accepted"],
-            SubmissionStatus["Compile Error"],
-            SubmissionStatus["Time Limit Exceeded"],
-            SubmissionStatus["Wrong Answer"],
-        ]);
+        expect(submission.statusDisplay).to.be.a("string");
         expect(submission.timestamp).to.be.an("number");
         expect(submission.code).to.be.a("string");
     });
