@@ -5,9 +5,8 @@
 >
 > Thanks for the excellent work for [leetcode-cli](https://github.com/skygragon/leetcode-cli) project! ❤️
 
-![GitHub package.json dynamic](https://img.shields.io/github/package-json/keywords/realVEct0r/leetcode-api)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/realVEct0r/leetcode-api)
-[![Build Status](https://travis-ci.org/realVEct0r/leetcode-api.svg?branch=master)](https://travis-ci.org/realVEct0r/leetcode-api)
+![GitHub package.json dynamic](https://img.shields.io/github/package-json/keywords/Dup4/Leetcode-API-TS)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/Dup4/Leetcode-API-TS)
 
 ## Install
 * npm: `npm i leetcode-api-ts`
@@ -18,7 +17,7 @@
 ```typescript
 (async (): Promise<void> => {
 
-    // Login 
+    // Login
     const leetcode: Leetcode = await Leetcode.build(
         "your username",
         "your password",
