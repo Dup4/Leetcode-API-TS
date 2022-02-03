@@ -41,6 +41,7 @@ class Leetcode {
             url: Leetcode.uris.login,
             resolveWithFullResponse: true,
         });
+
         const token: string = Helper.parseCookie(
             response.headers["set-cookie"],
             "csrftoken"
@@ -104,6 +105,7 @@ class Leetcode {
         let response = await Helper.HttpRequest({
             url: Leetcode.uris.problemsAll,
         });
+
         response = JSON.parse(response);
         const problems: Array<Problem> = response.stat_status_pairs.map(
             (p: any) => {
@@ -126,6 +128,7 @@ class Leetcode {
                 );
             }
         );
+
         return problems;
     }
 
