@@ -1,19 +1,22 @@
 <img align="right" width="96px" src="./assets/favicon.png">
 
 # Leetcode API
+
 > Leetcode API written with TypeScript, fully support async.
 >
 > Thanks for the excellent work for [leetcode-cli](https://github.com/skygragon/leetcode-cli) project! ❤️
 
-![GitHub package.json dynamic](https://img.shields.io/github/package-json/keywords/Dup4/Leetcode-API-TS)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/Dup4/Leetcode-API-TS)
+[![GitHub package.json dynamic](https://img.shields.io/github/package-json/keywords/Dup4/Leetcode-API-TS)][leetcode-api-typescript]
+[![GitHub package.json version](https://img.shields.io/github/package-json/v/Dup4/Leetcode-API-TS)][leetcode-api-typescript]
+[![Build](https://github.com/Dup4/Leetcode-API-TS/actions/workflows/build.yml/badge.svg)](https://github.com/Dup4/Leetcode-API-TS/actions/workflows/build.yml)
 
 ## Install
-* npm: `npm i leetcode-api-ts`
-* yarn: `yarn add leetcode-api-ts`
 
+* npm: `npm i leetcode-api-typescript`
+* yarn: `yarn add leetcode-api-typescript`
 
 ## Usage
+
 ```typescript
 (async (): Promise<void> => {
 
@@ -68,9 +71,11 @@
 ```
 
 ## Tips
+
 I especially recommend you fetch base properties first because of the large number of problems. Then call `Problem.detail()` or `Submission.detail()` fetch all properties of them.
 
 ## TODO
+
 * [X] ~~*Support Leetcode CN.*~~ [2019-08-24]
 * [ ] Fetch more user profile.
 * [ ] Fully parse submission status type.
@@ -78,14 +83,19 @@ I especially recommend you fetch base properties first because of the large numb
 * [ ] Support problems filter by companies.
 
 ## Test
+
 * `mv .env.example .env`
 * Update your leetcode account in `.env`
 * `yarn test`.
 
 ## Contribute
+
 * start: `yarn start`
 * build: `yarn build`
 * lint: `yarn lint`
 
 ## License
+
 MIT.
+
+[leetcode-api-typescript]: https://github.com/Dup4/Leetcode-API-TS
