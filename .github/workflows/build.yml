@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://json-schema.org/draft-07/schema#
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
+      - name: Install Node dependencies
+        run: |
+          yarn
+
+      - name: Build
+        run: |
+          yarn build
