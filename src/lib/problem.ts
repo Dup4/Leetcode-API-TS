@@ -4,6 +4,7 @@ import {
     ProblemDifficulty,
     ProblemStatus,
     Uris,
+    CodeSnippet,
 } from "../utils/interfaces";
 import Submission from "./submission";
 
@@ -31,7 +32,7 @@ class Problem {
         public sampleTestCase?: string,
         public content?: string,
         public translatedContent?: string,
-        public codeSnippets?: Array<any>
+        public codeSnippets?: Array<CodeSnippet>
     ) {}
 
     async detail(): Promise<Problem> {

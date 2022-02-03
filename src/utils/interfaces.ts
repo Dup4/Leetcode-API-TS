@@ -1,4 +1,4 @@
-interface HttpRequestOptions {
+export interface HttpRequestOptions {
     method?: string;
     url: string;
     referer?: string;
@@ -7,43 +7,49 @@ interface HttpRequestOptions {
     body?: any;
 }
 
-interface GraphQLRequestOptions {
+export interface GraphQLRequestOptions {
     origin?: string;
     referer?: string;
     query: string;
     variables?: object;
 }
 
-interface Credit {
+export interface Credit {
     session?: string;
     csrfToken: string;
 }
 
-enum ProblemStatus {
+export interface CodeSnippet {
+    lang: string;
+    langSlug: string;
+    code: string;
+}
+
+export enum ProblemStatus {
     "Accept",
     "Not Accept",
     "Not Start",
 }
 
-enum ProblemDifficulty {
+export enum ProblemDifficulty {
     "Easy",
     "Medium",
     "Hard",
 }
 
-enum SubmissionStatus {
+export enum SubmissionStatus {
     "Accepted",
     "Compile Error",
     "Wrong Answer",
     "Time Limit Exceeded",
 }
 
-enum EndPoint {
+export enum EndPoint {
     "US",
     "CN",
 }
 
-interface Uris {
+export interface Uris {
     base: string;
     login: string;
     graphql: string;
@@ -52,14 +58,3 @@ interface Uris {
     submit: string;
     submission: string;
 }
-
-export {
-    HttpRequestOptions,
-    GraphQLRequestOptions,
-    Credit,
-    ProblemStatus,
-    ProblemDifficulty,
-    SubmissionStatus,
-    EndPoint,
-    Uris,
-};

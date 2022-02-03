@@ -36,7 +36,7 @@
     // Show problem content, test case, code snippet etc
     const content: string = problem.content;
     const testCase: string = problem.sampleTestCase;
-    const codeSnippets: Array<any> = problem.codeSnippets;
+    const codeSnippets: Array<codeSnippets> = problem.codeSnippets;
 
     // submit your answer
     problem.submit("your code language", "your code here");
