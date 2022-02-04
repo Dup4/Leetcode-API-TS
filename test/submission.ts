@@ -7,7 +7,6 @@ import Submission from "../src/lib/submission";
 import { EndPoint, ProblemStatus } from "../src/utils/interfaces";
 
 describe("# Submission", async function () {
-    this.enableTimeouts(false);
     let submission: Submission;
 
     before(async () => {

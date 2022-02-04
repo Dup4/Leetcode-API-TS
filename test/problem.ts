@@ -12,8 +12,8 @@ import {
 } from "../src/utils/interfaces";
 
 describe("# Problem", async function () {
-    this.enableTimeouts(false);
     const problem: Problem = new Problem("two-sum");
+
     before(async () => {
         Dotenv.config();
         await Leetcode.build(
@@ -56,6 +56,7 @@ describe("# Problem", async function () {
         }
         expect(problem.codeSnippets).to.be.an("array");
     });
+
     it("Could get submissions", async () => {
         const submissions: Array<Submission> = await problem.getSubmissions();
         expect(submissions).to.be.a("array");

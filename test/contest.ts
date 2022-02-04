@@ -6,7 +6,6 @@ import Contest from "../src/lib/contest";
 import { EndPoint } from "../src/utils/interfaces";
 
 describe("# Contest", async function () {
-    this.enableTimeouts(false);
     const contest: Contest = new Contest(Contest.getWeeklyContestSlug(100));
 
     before(async () => {

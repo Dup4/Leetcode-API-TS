@@ -7,8 +7,8 @@ import { EndPoint } from "../src/utils/interfaces";
 
 describe("# Leetcode", () => {
     describe("Correct Account", async function () {
-        this.enableTimeouts(false);
         let leetcode: Leetcode;
+
         before(async () => {
             Dotenv.config();
             leetcode = await Leetcode.build(
@@ -19,19 +19,24 @@ describe("# Leetcode", () => {
                     : EndPoint.US
             );
         });
+
         it("Should be instance of Leetcode", () => {
             expect(leetcode).to.instanceOf(Leetcode);
         });
+
         it("Should has session", () => {
             expect(leetcode.session).to.not.null;
         });
+
         it("Should has csrf token", () => {
             expect(leetcode.csrfToken).to.not.null;
         });
+
         it("Could get profile", async () => {
             const profile: any = await leetcode.getProfile();
             expect(profile.username).to.not.null;
         });
+
         it("Could get all problems", async () => {
             const problems: Array<Problem> = await leetcode.getAllProblems();
             expect(problems.length).least(1000);
@@ -39,6 +44,7 @@ describe("# Leetcode", () => {
                 problems[Math.floor(Math.random() * problems.length)];
             expect(problem.slug).to.not.null;
         });
+
         it("Could get problems by tag", async () => {
             const problems: Array<Problem> = await leetcode.getProblemsByTag(
                 "array"
@@ -51,8 +57,6 @@ describe("# Leetcode", () => {
     });
 
     describe("Incorrect Account", async function () {
-        this.enableTimeouts(false);
-
         it("Should throw login error", async () => {
             try {
                 await Leetcode.build(
