@@ -51,7 +51,6 @@
         "nyc": "^15.1.0",
         "ts-node": "^10.4.0",
         "ts-patch": "^2.0.1",
-        "tsconfig-paths": "^3.12.0",
         "typescript": "^4.5.5",
         "typescript-transform-paths": "^3.3.1"
     }
