@@ -11,11 +11,25 @@ describe("# Submission", async function () {
 
     before(async () => {
         Dotenv.config();
-        const leetcode: Leetcode = await Leetcode.build(
-            process.env.LEETCODE_USERNAME || "",
-            process.env.LEETCODE_PASSWORD || "",
-            process.env.LEETCODE_ENDPOINT === "CN" ? EndPoint.CN : EndPoint.US
+
+        const props = (() => {
+            if (process.env?.LEETCODE_COOKIE) {
+                return {
+                    cookie: process.env.LEETCODE_COOKIE,
+                };
+            } else {
+                return {
+                    username: process.env.LEETCODE_USERNAME || "",
+                    password: process.env.LEETCODE_PASSWORD || "",
+                };
+            }
+        })();
+
+        const leetcode = await Leetcode.build(
+            process.env.LEETCODE_ENDPOINT === "CN" ? EndPoint.CN : EndPoint.US,
+            props
         );
+
         const problems: Array<Problem> = await leetcode.getAllProblems();
         const acceptedProblems: Array<Problem> = problems.filter(
             (p: Problem) => {

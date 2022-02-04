@@ -7,12 +7,6 @@ import {
 } from "@/utils/interfaces";
 
 class Contest {
-    static uris: Uris;
-
-    static setUris(uris: Uris): void {
-        Contest.uris = uris;
-    }
-
     static getWeeklyContestSlug(id: number): string {
         return `weekly-contest-${id}`;
     }
@@ -34,7 +28,7 @@ class Contest {
 
     async detail(): Promise<Contest> {
         let response = await Helper.HttpRequest({
-            url: Contest.uris.contestInfo.replace("$slug", this.slug),
+            url: Helper.uris.contestInfo.replace("$slug", this.slug),
         });
 
         response = JSON.parse(response);

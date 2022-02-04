@@ -2,12 +2,6 @@ import Helper from "@/utils/helper";
 import { Uris } from "@/utils/interfaces";
 
 class Submission {
-    static uris: Uris;
-
-    static setUris(uris: Uris): void {
-        Submission.uris = uris;
-    }
-
     constructor(
         public id: number,
         public lang?: string,

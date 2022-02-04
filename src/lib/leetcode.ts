@@ -7,11 +7,6 @@ class Leetcode {
     session?: string;
     csrfToken: string;
 
-    static uris: Uris;
-    static setUris(uris: Uris): void {
-        Leetcode.uris = uris;
-    }
-
     constructor(credit: Credit) {
         this.session = credit.session;
         this.csrfToken = credit.csrfToken;
@@ -25,72 +20,84 @@ class Leetcode {
     }
 
     static async build(
-        username: string,
-        password: string,
-        endpoint: EndPoint
+        endpoint: EndPoint,
+        props?: {
+            username?: string;
+            password?: string;
+            cookie?: string;
+        }
     ): Promise<Leetcode> {
         Helper.switchEndPoint(endpoint);
-        const credit: Credit = await this.login(username, password);
+
+        const credit = await (async (): Promise<Credit> => {
+            if (props?.cookie) {
+                return await this.getCredit(props.cookie.split(" "));
+            }
+
+            return await this.login(
+                props?.username ?? "",
+                props?.password ?? ""
+            );
+        })();
+
         Helper.setCredit(credit);
+
         return new Leetcode(credit);
     }
 
     static async login(username: string, password: string): Promise<Credit> {
-        // got login token first
-        const response = await Helper.HttpRequest({
-            url: Leetcode.uris.login,
-            resolveWithFullResponse: true,
-        });
+        const csrfToken = await (async () => {
+            // got login token first
+            const response = await Helper.HttpRequest({
+                url: Helper.uris.login,
+                resolveWithFullResponse: true,
+            });
 
-        const token: string = Helper.parseCookie(
-            response.headers["set-cookie"],
-            "csrftoken"
-        );
+            // Leetcode CN return null here, but it's does not matter
+            const csrfToken: string = Helper.parseCookie(
+                response.headers["set-cookie"],
+                "csrftoken"
+            );
 
-        // Leetcode CN return null here, but it's does not matter
-        let credit: Credit = {
-            csrfToken: token,
-        };
+            Helper.setCredit({ csrfToken });
 
-        Helper.setCredit(credit);
+            return csrfToken;
+        })();
 
         try {
-            // then login
-            const _response = await Helper.HttpRequest({
+            const response = await Helper.HttpRequest({
                 method: "POST",
-                url: Leetcode.uris.login,
+                url: Helper.uris.login,
                 form: {
-                    csrfmiddlewaretoken: token,
+                    csrfmiddlewaretoken: csrfToken,
                     login: username,
                     password: password,
                 },
                 resolveWithFullResponse: true,
             });
-            const session = Helper.parseCookie(
-                _response.headers["set-cookie"],
-                "LEETCODE_SESSION"
-            );
 
-            const csrfToken = Helper.parseCookie(
-                _response.headers["set-cookie"],
-                "csrftoken"
-            );
-
-            credit = {
-                session: session,
-                csrfToken: csrfToken,
-            };
+            return await this.getCredit(response.headers["set-cookie"]);
         } catch (e) {
             if (e instanceof StatusCodeError) {
                 throw new Error("Login Fail");
             }
         }
 
-        return credit;
+        return { csrfToken };
+    }
+
+    static async getCredit(cookie: Array<string>): Promise<Credit> {
+        const session = Helper.parseCookie(cookie, "LEETCODE_SESSION");
+        const csrfToken = Helper.parseCookie(cookie, "csrftoken");
+
+        return {
+            session,
+            csrfToken,
+        };
     }
 
     async getProfile(): Promise<any> {
-        // ? TODO : fetch more user profile.
+        // TODO: fetch more user profile.
         const response: any = await Helper.GraphQLRequest({
             query: `
             {
@@ -100,12 +107,13 @@ class Leetcode {
             }
             `,
         });
+
         return response.user;
     }
 
     async getAllProblems(): Promise<Array<Problem>> {
         let response = await Helper.HttpRequest({
-            url: Leetcode.uris.problemsAll,
+            url: Helper.uris.problemsAll,
         });
 
         response = JSON.parse(response);

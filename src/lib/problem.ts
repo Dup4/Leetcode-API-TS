@@ -9,12 +9,6 @@ import {
 import Submission from "./submission";
 
 class Problem {
-    static uris: Uris;
-
-    static setUris(uris: Uris): void {
-        Problem.uris = uris;
-    }
-
     constructor(
         readonly slug: string,
         public id?: number,
@@ -150,7 +144,7 @@ class Problem {
 
     async submit(lang: string, code: string): Promise<Submission> {
         const response = await Helper.HttpRequest({
-            url: Problem.uris.submit.replace("$slug", this.slug),
+            url: Helper.uris.submit.replace("$slug", this.slug),
             method: "POST",
             body: {
                 lang: lang,

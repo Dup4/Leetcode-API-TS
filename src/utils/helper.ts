@@ -40,6 +40,7 @@ class Helper {
 
         for (let ix = 0; ix !== cookies.length; ++ix) {
             const result = cookies[ix].match(new RegExp(`${key}=(.+?);`));
+
             if (result) {
                 return result[1] || "";
             }
@@ -106,7 +107,7 @@ class Helper {
                 return SubmissionStatus["Time Limit Exceeded"];
             case "20":
                 return SubmissionStatus["Compile Error"];
-            // TODO : find out what this numbers mean
+            // TODO: find out what this numbers mean
             // 12 => MLE
             // 13 => OLE
             // 15 => RE
@@ -165,10 +166,6 @@ class Helper {
         })();
 
         Helper.setUris(uris);
-        Leetcode.setUris(uris);
-        Problem.setUris(uris);
-        Contest.setUris(uris);
-        Submission.setUris(uris);
     }
 }
 
