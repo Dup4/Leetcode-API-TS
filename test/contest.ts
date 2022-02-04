@@ -45,4 +45,10 @@ describe("# Contest", async function () {
         expect(contest.registered).to.be.a("boolean");
         expect(contest.containsPremium).to.be.a("boolean");
     });
+
+    it("Should contain 4 problems", async () => {
+        const p = await contest.getProblems();
+        expect(p).to.be.a("array");
+        expect(p.length).equal(4);
+    });
 });

@@ -7,6 +7,7 @@ import Submission from "../src/lib/submission";
 import Helper from "../src/utils/helper";
 import {
     EndPoint,
+    LangSlug,
     ProblemDifficulty,
     ProblemStatus,
 } from "../src/utils/interfaces";
@@ -80,7 +81,8 @@ describe("# Problem", async function () {
     });
 
     it("Could submit solution", async () => {
-        const submission = await problem.submit("cpp", "test code here");
+        const submission = await problem.submit(LangSlug.cpp, "test code here");
+
         setTimeout(async () => {
             await submission.detail();
             expect(submission.statusDisplay).to.be.a("string");

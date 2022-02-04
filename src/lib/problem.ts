@@ -1,3 +1,4 @@
+import { LangSlug } from "./../utils/interfaces";
 import Helper from "@/utils/helper";
 import {
     EndPoint,
@@ -161,12 +162,12 @@ class Problem {
         return submissions;
     }
 
-    async submit(lang: string, code: string): Promise<Submission> {
+    async submit(langSlug: LangSlug, code: string): Promise<Submission> {
         const response = await Helper.HttpRequest({
             url: Helper.uris.submit.replace("$slug", this.slug),
             method: "POST",
             body: {
-                lang: lang,
+                lang: LangSlug[langSlug],
                 // eslint-disable-next-line @typescript-eslint/camelcase
                 question_id: this.id,
                 // eslint-disable-next-line @typescript-eslint/camelcase

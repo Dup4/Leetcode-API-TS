@@ -55,6 +55,27 @@ export interface Company {
     slug: string;
 }
 
+export enum LangSlug {
+    "cpp",
+    "java",
+    "python",
+    "python3",
+    "c",
+    "csharp",
+    "javascript",
+    "ruby",
+    "swift",
+    "golang",
+    "scala",
+    "kotlin",
+    "rust",
+    "php",
+    "typescript",
+    "racket",
+    "erlang",
+    "elixir",
+}
+
 export enum ProblemStatus {
     "Accept",
     "Not Accept",
