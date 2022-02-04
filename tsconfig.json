@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
-        "target": "esnext",
-        "module": "commonjs",
+        "target": "ES5",
+        "module": "ESNext",
         "moduleResolution": "node",
         "allowJs": false,
         "declaration": true,
         "sourceMap": true,
-        "outDir": "./dist",
         "rootDir": "./src",
+        "outDir": "./dist/esm",
         "strict": true,
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
@@ -27,6 +27,9 @@
             }
         ],
     },
+    "include": [
+        "./src",
+    ],
     "exclude": [
         "./dist",
         "./test",

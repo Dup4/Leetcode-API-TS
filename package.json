@@ -15,17 +15,17 @@
         "url": "https://dup4.com"
     },
     "license": "MIT",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
+    "main": "dist/cjs/index.js",
+    "types": "dist/cjs/index.d.ts",
+    "module": "dist/esm/index.js",
     "files": [
-        "dist/**/*.js",
-        "dist/**/*.d.ts",
+        "dist/",
         "LICENSE",
         "README.md"
     ],
     "scripts": {
         "prepare": "ts-patch install -s",
-        "build": "rm -rf dist && tsc -p tsconfig.json",
+        "build": "rm -rf dist && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
         "start": "node dist",
         "lint": "eslint src --ext .ts",
         "test": "mocha -r ts-node/register test/**/*.ts --timeout 10000"
