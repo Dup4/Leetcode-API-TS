@@ -78,8 +78,8 @@ export enum LangSlug {
 
 export enum ProblemStatus {
     "Accept",
-    "Not Accept",
-    "Not Start",
+    "NotAccept",
+    "NotStart",
 }
 
 export enum ProblemDifficulty {

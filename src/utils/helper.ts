@@ -45,74 +45,29 @@ class Helper {
         return "";
     }
 
-    static levelToName(level: number): string {
-        switch (level) {
-            case 1:
-                return "Easy";
-            case 2:
-                return "Medium";
-            case 3:
-                return "Hard";
-            default:
-                return "";
-        }
-    }
-
     static statusMap(status: string | null): ProblemStatus {
         switch (status) {
             case "ac":
-                return ProblemStatus["Accept"];
+                return ProblemStatus.Accept;
             case "notac":
-                return ProblemStatus["Not Accept"];
+                return ProblemStatus.NotAccept;
             case null:
-                return ProblemStatus["Not Start"];
+                return ProblemStatus.NotStart;
             default:
-                return ProblemStatus["Not Start"];
+                return ProblemStatus.NotStart;
         }
     }
 
-    static difficultyMap(difficulty: number): ProblemDifficulty {
+    static difficultyMap(difficulty: string): ProblemDifficulty {
         switch (difficulty) {
-            case 1:
+            case "Easy":
                 return ProblemDifficulty.Easy;
-            case 2:
+            case "Medium":
                 return ProblemDifficulty.Medium;
-            case 3:
+            case "Hard":
                 return ProblemDifficulty.Hard;
             default:
                 return ProblemDifficulty.Easy;
-        }
-    }
-
-    static submissionStatusMap(submission: string): SubmissionStatus {
-        switch (submission) {
-            case "Accepted":
-                return SubmissionStatus["Accepted"];
-            case "Compile Error":
-                return SubmissionStatus["Compile Error"];
-            case "Time Limit Exceeded":
-                return SubmissionStatus["Time Limit Exceeded"];
-            case "Wrong Answer":
-                return SubmissionStatus["Wrong Answer"];
-
-            case "10":
-                return SubmissionStatus["Accepted"];
-            case "11":
-                return SubmissionStatus["Wrong Answer"];
-            case "14":
-                return SubmissionStatus["Time Limit Exceeded"];
-            case "20":
-                return SubmissionStatus["Compile Error"];
-            // TODO: find out what this numbers mean
-            // 12 => MLE
-            // 13 => OLE
-            // 15 => RE
-            // 16 => IE
-            // 21 => UE
-            // 30 => TO
-            // default => UE
-            default:
-                return SubmissionStatus["Wrong Answer"];
         }
     }
 

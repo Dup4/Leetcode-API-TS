@@ -153,7 +153,8 @@ class Problem {
                         s.memory,
                         s.runtime,
                         s.statusDisplay,
-                        Number(s.timestamp)
+                        Number(s.timestamp),
+                        s.code
                     )
                 );
             });
