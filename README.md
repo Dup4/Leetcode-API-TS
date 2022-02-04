@@ -1,6 +1,6 @@
 <img align="right" width="96px" src="./assets/favicon.png">
 
-# Leetcode API
+# Leetcode API TS
 
 > Leetcode API written with TypeScript, fully support async.
 >
