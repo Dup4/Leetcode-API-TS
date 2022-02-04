@@ -2,6 +2,7 @@
     "compilerOptions": {
         "target": "esnext",
         "module": "commonjs",
+        "moduleResolution": "node",
         "allowJs": false,
         "declaration": true,
         "sourceMap": true,
@@ -15,14 +16,24 @@
                 "src/*"
             ],
         },
+        "plugins": [
+            {
+                "transform": "typescript-transform-paths"
+            },
+            {
+                "transform": "typescript-transform-paths",
+                "afterDeclarations": true
+            }
+        ],
     },
     "exclude": [
         "./dist",
         "./test",
     ],
     "ts-node": {
+        "transpileOnly": true,
         "require": [
-            "tsconfig-paths/register"
-        ]
+            "typescript-transform-paths/register"
+        ],
     }
 }
