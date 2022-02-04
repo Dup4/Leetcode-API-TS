@@ -8,7 +8,8 @@ class Submission {
         public runtime?: string,
         public statusDisplay?: string,
         public timestamp?: number,
-        public code?: string
+        public code?: string,
+        public sourceUrl?: string
     ) {}
 
     static async build(id: number): Promise<Submission> {
@@ -74,6 +75,7 @@ class Submission {
         this.statusDisplay = submissionDetail.statusDisplay;
         this.timestamp = submissionDetail.timestamp;
         this.code = submissionDetail.code;
+        this.sourceUrl = submissionDetail.sourceUrl;
 
         return this;
     }

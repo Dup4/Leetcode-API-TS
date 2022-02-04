@@ -128,8 +128,6 @@ class Problem {
                             lang
                             runtime
                             timestamp
-                            url
-                            isPending
                             memory
                         }
                     }
@@ -154,7 +152,8 @@ class Problem {
                         s.runtime,
                         s.statusDisplay,
                         Number(s.timestamp),
-                        s.code
+                        undefined,
+                        undefined
                     )
                 );
             });
