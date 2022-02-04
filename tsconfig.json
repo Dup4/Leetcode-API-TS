@@ -19,6 +19,10 @@
     "exclude": [
         "./dist",
         "./test",
-    ]
+    ],
+    "ts-node": {
+        "require": [
+            "tsconfig-paths/register"
+        ]
+    }
 }
-
