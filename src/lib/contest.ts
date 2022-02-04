@@ -3,7 +3,6 @@ import {
     Company,
     ContestInfo,
     SimpleProblemInfoInContest,
-    Uris,
 } from "@/utils/interfaces";
 
 class Contest {

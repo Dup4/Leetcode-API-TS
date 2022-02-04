@@ -63,10 +63,13 @@ describe("# Problem", async function () {
         expect(problem.tag).to.be.an("array");
         expect(problem.totalAccepted).to.be.a("number");
         expect(problem.totalSubmission).to.be.a("number");
+        expect(problem.hints).to.be.a("array");
         expect(problem.sampleTestCase).to.be.a("string");
+        expect(problem.exampleTestcases).to.be.a("string");
         expect(problem.content).to.be.a("string");
         if (Helper.endpoint === EndPoint.CN) {
             expect(problem.translatedContent).to.be.a("string");
+            expect(problem.translatedTitle).to.be.a("string");
         }
         expect(problem.codeSnippets).to.be.an("array");
     });

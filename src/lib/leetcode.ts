@@ -1,6 +1,6 @@
 import { StatusCodeError } from "request-promise-native/errors";
 import Helper from "@/utils/helper";
-import { Credit, EndPoint, Uris } from "@/utils/interfaces";
+import { Credit, EndPoint } from "@/utils/interfaces";
 import Problem from "./problem";
 
 class Leetcode {

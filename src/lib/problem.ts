@@ -23,9 +23,12 @@ class Problem {
         public totalAccepted?: number,
         public totalSubmission?: number,
 
+        public hints?: Array<string>,
         public sampleTestCase?: string,
+        public exampleTestcases?: string,
         public content?: string,
         public translatedContent?: string,
+        public translatedTitle?: string,
         public codeSnippets?: Array<CodeSnippet>
     ) {}
 
@@ -44,11 +47,6 @@ class Problem {
                         stats
                         status
                         content
-                        ${
-                            Helper.endpoint === EndPoint.CN
-                                ? "translatedContent"
-                                : ""
-                        }
                         topicTags {
                             name
                         }
@@ -57,7 +55,19 @@ class Problem {
                             langSlug
                             code
                         }
+                        hints
+                        exampleTestcases
                         sampleTestCase
+                        ${
+                            Helper.endpoint === EndPoint.CN
+                                ? "translatedContent"
+                                : ""
+                        }
+                        ${
+                            Helper.endpoint === EndPoint.CN
+                                ? "translatedTitle"
+                                : ""
+                        }
                     }
                 }
             `,
@@ -82,9 +92,12 @@ class Problem {
         this.totalAccepted = stats.totalAcceptedRaw;
         this.totalSubmission = stats.totalSubmissionRaw;
 
+        this.hints = question.hints;
         this.sampleTestCase = question.sampleTestCase;
+        this.exampleTestcases = question.exampleTestcases;
         this.content = question.content;
         this.translatedContent = question.translatedContent;
+        this.translatedTitle = question.translatedTitle;
         this.codeSnippets = question.codeSnippets;
 
         return this;
