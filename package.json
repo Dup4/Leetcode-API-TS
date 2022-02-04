@@ -26,7 +26,7 @@
     "scripts": {
         "prepare": "ts-patch install -s",
         "build": "rm -rf dist && tsc -p tsconfig.json && tsc -p tsconfig-cjs.json",
-        "start": "node dist",
+        "start": "node dist/cjs",
         "lint": "eslint src --ext .ts",
         "test": "mocha -r ts-node/register test/**/*.ts --timeout 10000"
     },
