@@ -4,6 +4,7 @@ import {
     ContestInfo,
     SimpleProblemInfoInContest,
 } from "@/utils/interfaces";
+import Problem from "./problem";
 
 class Contest {
     static getWeeklyContestSlug(id: number): string {
@@ -25,6 +26,12 @@ class Contest {
         public containsPremium?: boolean
     ) {}
 
+    static async build(slug: string): Promise<Contest> {
+        const contest: Contest = new Contest(slug);
+        await contest.detail();
+        return contest;
+    }
+
     async detail(): Promise<Contest> {
         let response = await Helper.HttpRequest({
             url: Helper.uris.contestInfo.replace("$slug", this.slug),
@@ -42,6 +49,18 @@ class Contest {
         this.containsPremium = response.containsPremium;
 
         return this;
+    }
+
+    async getProblems(): Promise<Array<Problem>> {
+        if (this.questions) {
+            return Promise.all(
+                this.questions.map(async (q) => {
+                    return await Problem.build(q.title_slug);
+                })
+            );
+        }
+
+        return [];
     }
 }
 

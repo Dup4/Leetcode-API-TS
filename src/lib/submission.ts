@@ -11,6 +11,12 @@ class Submission {
         public code?: string
     ) {}
 
+    static async build(id: number): Promise<Submission> {
+        const submission: Submission = new Submission(id);
+        await submission.detail();
+        return submission;
+    }
+
     async detail(): Promise<Submission> {
         const response = await Helper.GraphQLRequest({
             query: `

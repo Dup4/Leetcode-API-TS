@@ -32,6 +32,12 @@ class Problem {
         public codeSnippets?: Array<CodeSnippet>
     ) {}
 
+    static async build(slug: string): Promise<Problem> {
+        const problem: Problem = new Problem(slug);
+        await problem.detail();
+        return problem;
+    }
+
     async detail(): Promise<Problem> {
         const response = await Helper.GraphQLRequest({
             query: `
