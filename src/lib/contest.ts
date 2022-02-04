@@ -1,10 +1,10 @@
-import Helper from "../utils/helper";
+import Helper from "@/utils/helper";
 import {
     Company,
     ContestInfo,
     SimpleProblemInfoInContest,
     Uris,
-} from "../utils/interfaces";
+} from "@/utils/interfaces";
 
 class Contest {
     static uris: Uris;

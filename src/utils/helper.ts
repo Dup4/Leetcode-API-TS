@@ -1,10 +1,10 @@
 import { GraphQLClient } from "graphql-request";
 import Request from "request-promise-native";
-import Config from "../lib/config";
-import Contest from "../lib/contest";
-import Leetcode from "../lib/leetcode";
-import Problem from "../lib/problem";
-import Submission from "../lib/submission";
+import Config from "@/lib/config";
+import Contest from "@/lib/contest";
+import Leetcode from "@/lib/leetcode";
+import Problem from "@/lib/problem";
+import Submission from "@/lib/submission";
 import {
     Credit,
     EndPoint,

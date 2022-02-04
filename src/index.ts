@@ -1,3 +1,6 @@
-import Leetcode from "./lib/leetcode";
+export * from "@/lib/problem";
+export * from "@/lib/contest";
+export * from "@/lib/submission";
+export * from "@/utils/interfaces";
 
-export default Leetcode;
+export { default as DefaultExport } from "@/lib/leetcode";

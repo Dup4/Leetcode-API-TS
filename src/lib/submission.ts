@@ -1,5 +1,5 @@
-import Helper from "../utils/helper";
-import { Uris } from "../utils/interfaces";
+import Helper from "@/utils/helper";
+import { Uris } from "@/utils/interfaces";
 
 class Submission {
     static uris: Uris;

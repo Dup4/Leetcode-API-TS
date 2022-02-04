@@ -8,7 +8,10 @@
         "cSpell.words": [
             "camelcase",
             "csrftoken",
-            "leetcode"
+            "eqeqeq",
+            "leetcode",
+            "notac",
+            "Testcase"
         ]
     },
 }

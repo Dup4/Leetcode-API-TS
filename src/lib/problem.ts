@@ -1,11 +1,11 @@
-import Helper from "../utils/helper";
+import Helper from "@/utils/helper";
 import {
     EndPoint,
     ProblemDifficulty,
     ProblemStatus,
     Uris,
     CodeSnippet,
-} from "../utils/interfaces";
+} from "@/utils/interfaces";
 import Submission from "./submission";
 
 class Problem {
