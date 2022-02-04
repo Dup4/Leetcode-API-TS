@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
         "target": "ES5",
-        "module": "ESNext",
+        "module": "CommonJS",
         "moduleResolution": "node",
         "allowJs": false,
         "declaration": true,
         "sourceMap": true,
         "rootDir": "./src",
-        "outDir": "./dist/esm",
+        "outDir": "./dist/cjs",
         "strict": true,
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
