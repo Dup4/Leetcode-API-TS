@@ -76,6 +76,48 @@ export enum LangSlug {
     "elixir",
 }
 
+export function LangSlugExt(langSlug: LangSlug): string {
+    switch (langSlug) {
+        case LangSlug.cpp:
+            return "cpp";
+        case LangSlug.java:
+            return "java";
+        case LangSlug.python:
+        case LangSlug.python3:
+            return "py";
+        case LangSlug.c:
+            return "c";
+        case LangSlug.csharp:
+            return "cs";
+        case LangSlug.javascript:
+            return "js";
+        case LangSlug.ruby:
+            return "rb";
+        case LangSlug.swift:
+            return "swift";
+        case LangSlug.golang:
+            return "go";
+        case LangSlug.scala:
+            return "scala";
+        case LangSlug.kotlin:
+            return "kotlin";
+        case LangSlug.rust:
+            return "rs";
+        case LangSlug.php:
+            return "php";
+        case LangSlug.typescript:
+            return "ts";
+        case LangSlug.racket:
+            return "racket";
+        case LangSlug.erlang:
+            return "erlang";
+        case LangSlug.elixir:
+            return "erlang";
+        default:
+            return "unknown";
+    }
+}
+
 export enum ProblemStatus {
     "Accept",
     "NotAccept",
