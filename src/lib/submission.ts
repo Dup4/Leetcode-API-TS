@@ -79,6 +79,10 @@ class Submission {
 
         return this;
     }
+
+    getSubmissionUrl(): string {
+        return Helper.uris.submission.replace("$id", this.id.toString());
+    }
 }
 
 export default Submission;
