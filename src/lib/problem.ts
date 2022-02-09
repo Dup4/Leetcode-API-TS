@@ -4,7 +4,6 @@ import {
     EndPoint,
     ProblemDifficulty,
     ProblemStatus,
-    Uris,
     CodeSnippet,
 } from "@/utils/interfaces";
 import Submission from "./submission";
