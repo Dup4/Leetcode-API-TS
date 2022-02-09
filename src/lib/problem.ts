@@ -8,7 +8,6 @@ import {
 } from "@/utils/interfaces";
 import Submission from "./submission";
 import * as cherrio from "cheerio";
-import fs from "fs";
 
 class Problem {
     constructor(
