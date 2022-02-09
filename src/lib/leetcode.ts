@@ -123,6 +123,7 @@ class Leetcode {
                     p.stat.question__title_slug,
                     p.stat.question_id,
                     p.stat.question__title,
+                    undefined,
                     Helper.difficultyMap(p.difficulty.level),
                     p.is_favor,
                     p.paid_only,
