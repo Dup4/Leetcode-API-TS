@@ -7,6 +7,8 @@ import {
     ProblemStatus,
 } from "@/utils/interfaces";
 import Submission from "./submission";
+import * as cherrio from "cheerio";
+import fs from "fs";
 
 class Problem {
     constructor(
@@ -107,6 +109,43 @@ class Problem {
         this.codeSnippets = question.codeSnippets;
 
         return this;
+    }
+
+    async getContentImages(): Promise<{
+        content: Map<string, string>;
+        translatedContent: Map<string, string>;
+    }> {
+        const res = {
+            content: new Map<string, string>(),
+            translatedContent: new Map<string, string>(),
+        };
+
+        const getImg = async (htmlContent: string, mp: Map<string, string>) => {
+            const $ = cherrio.load(htmlContent);
+
+            $("img").each((ix: number, e: any) => {
+                mp.set($(e).attr("src") as string, "");
+            });
+
+            for (const key of mp.keys()) {
+                const resp = await Helper.HttpRequest({
+                    url: key,
+                    encoding: "binary",
+                });
+
+                mp.set(key, resp);
+            }
+        };
+
+        if (this.content) {
+            await getImg(this.content, res.content);
+        }
+
+        if (this.translatedContent) {
+            await getImg(this.translatedContent, res.translatedContent);
+        }
+
+        return res;
     }
 
     async getSubmissions(): Promise<Array<Submission>> {

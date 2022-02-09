@@ -5,6 +5,7 @@ export interface HttpRequestOptions {
     resolveWithFullResponse?: boolean;
     form?: any;
     body?: any;
+    encoding?: any;
 }
 
 export interface GraphQLRequestOptions {

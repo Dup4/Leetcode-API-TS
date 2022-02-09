@@ -8,7 +8,6 @@ import {
     HttpRequestOptions,
     ProblemDifficulty,
     ProblemStatus,
-    SubmissionStatus,
     Uris,
 } from "./interfaces";
 
@@ -87,6 +86,7 @@ class Helper {
             resolveWithFullResponse: options.resolveWithFullResponse || false,
             form: options.form || null,
             body: JSON.stringify(options.body) || "",
+            encoding: options.encoding || "utf-8",
         });
     }
 

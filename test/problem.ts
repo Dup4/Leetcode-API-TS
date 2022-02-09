@@ -13,7 +13,7 @@ import {
 } from "../src/utils/interfaces";
 
 describe("# Problem", async function () {
-    const problem: Problem = new Problem("two-sum");
+    const problem: Problem = new Problem("add-two-numbers");
 
     before(async () => {
         Dotenv.config();
@@ -73,6 +73,12 @@ describe("# Problem", async function () {
             expect(problem.translatedTitle).to.be.a("string");
         }
         expect(problem.codeSnippets).to.be.an("array");
+    });
+
+    it("Could get ContentImages", async () => {
+        const contentImages = await problem.getContentImages();
+        expect(contentImages.content).to.instanceOf(Map);
+        expect(contentImages.translatedContent).to.instanceOf(Map);
     });
 
     it("Could get submissions", async () => {
