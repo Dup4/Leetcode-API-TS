@@ -167,9 +167,7 @@ class Problem {
             method: "POST",
             body: {
                 lang: LangSlug[langSlug],
-                // eslint-disable-next-line @typescript-eslint/camelcase
                 question_id: this.id,
-                // eslint-disable-next-line @typescript-eslint/camelcase
                 typed_code: code,
             },
         });

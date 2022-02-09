@@ -40,9 +40,7 @@ class Contest {
         response = JSON.parse(response);
         this.contest = response.contest;
         this.questions = response.questions;
-        // eslint-disable-next-line @typescript-eslint/camelcase
         this.user_num = response.user_num;
-        // eslint-disable-next-line @typescript-eslint/camelcase
         this.has_chosen_contact = response.has_chosen_contact;
         this.company = response.company;
         this.registered = response.registered;
