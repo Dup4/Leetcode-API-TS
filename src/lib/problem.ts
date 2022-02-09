@@ -5,6 +5,7 @@ import {
     LangSlug,
     ProblemDifficulty,
     ProblemStatus,
+    TopicTag,
 } from "@/utils/interfaces";
 import Submission from "./submission";
 import * as cherrio from "cheerio";
@@ -14,13 +15,14 @@ class Problem {
         readonly slug: string,
         public id?: number,
         public title?: string,
+        public categoryTitle?: string,
         public difficulty?: ProblemDifficulty,
         public starred?: boolean,
         public locked?: boolean,
         public likes?: number,
         public dislikes?: number,
         public status?: ProblemStatus,
-        public tag?: Array<string>,
+        public tag?: Array<TopicTag>,
         public totalAccepted?: number,
         public totalSubmission?: number,
 
@@ -46,6 +48,7 @@ class Problem {
                     question(titleSlug: $titleSlug) {
                         questionId
                         title
+                        categoryTitle
                         difficulty
                         likes
                         dislikes
@@ -56,6 +59,12 @@ class Problem {
                         content
                         topicTags {
                             name
+                            slug
+                            ${
+                                Helper.endpoint === EndPoint.CN
+                                    ? "translatedName"
+                                    : ""
+                            }
                         }
                         codeSnippets {
                             lang
@@ -86,15 +95,14 @@ class Problem {
         const question = response.question;
         this.id = Number(question.questionId);
         this.title = question.title;
+        this.categoryTitle = question.categoryTitle;
         this.difficulty = Helper.difficultyMap(question.difficulty);
         this.starred = question.isLiked !== null;
         this.locked = question.isPaidOnly;
         this.likes = question.likes;
         this.dislikes = question.dislikes;
         this.status = Helper.statusMap(question.status);
-        this.tag = question.topicTags.map(function (t: any) {
-            return t.name;
-        });
+        this.tag = question.topicTags;
         const stats: any = JSON.parse(question.stats);
         this.totalAccepted = stats.totalAcceptedRaw;
         this.totalSubmission = stats.totalSubmissionRaw;

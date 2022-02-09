@@ -20,6 +20,12 @@ export interface Credit {
     csrfToken: string;
 }
 
+export interface TopicTag {
+    name: string;
+    slug: string;
+    translatedName?: string;
+}
+
 export interface CodeSnippet {
     lang: string;
     langSlug: string;
