@@ -1,10 +1,10 @@
-import { LangSlug } from "./../utils/interfaces";
 import Helper from "@/utils/helper";
 import {
     EndPoint,
+    CodeSnippet,
+    LangSlug,
     ProblemDifficulty,
     ProblemStatus,
-    CodeSnippet,
 } from "@/utils/interfaces";
 import Submission from "./submission";
 
