@@ -119,7 +119,7 @@ export function LangSlugExt(langSlug: LangSlug): string {
         case LangSlug.erlang:
             return "erlang";
         case LangSlug.elixir:
-            return "erlang";
+            return "elixir";
         default:
             return "unknown";
     }
