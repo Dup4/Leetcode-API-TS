@@ -83,6 +83,27 @@ export enum LangSlug {
     "elixir",
 }
 
+export const LangText: Record<LangSlug, string> = {
+    [LangSlug.cpp]: "C++",
+    [LangSlug.java]: "Java",
+    [LangSlug.python]: "Python",
+    [LangSlug.python3]: "Python 3",
+    [LangSlug.c]: "C",
+    [LangSlug.csharp]: "C#",
+    [LangSlug.javascript]: "JavaScript",
+    [LangSlug.ruby]: "Ruby",
+    [LangSlug.swift]: "Swift",
+    [LangSlug.golang]: "Go",
+    [LangSlug.scala]: "Scala",
+    [LangSlug.kotlin]: "Kotlin",
+    [LangSlug.rust]: "Rust",
+    [LangSlug.php]: "PHP",
+    [LangSlug.typescript]: "TypeScript",
+    [LangSlug.racket]: "Racket",
+    [LangSlug.erlang]: "Erlang",
+    [LangSlug.elixir]: "Elixir",
+};
+
 export function LangSlugExt(langSlug: LangSlug): string {
     switch (langSlug) {
         case LangSlug.cpp:
