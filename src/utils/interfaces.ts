@@ -104,7 +104,7 @@ export const LangText: Record<LangSlug, string> = {
     [LangSlug.elixir]: "Elixir",
 };
 
-export function LangSlugExt(langSlug: LangSlug): string {
+export function LangExt(langSlug: LangSlug): string {
     switch (langSlug) {
         case LangSlug.cpp:
             return "cpp";
