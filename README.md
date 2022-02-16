@@ -1,4 +1,3 @@
-<img align="left" width="96px" src="./assets/favicon.png">
 <img align="right" width="96px" src="./assets/Typescript_logo_2020.svg.png">
 
 # Leetcode API TS
