@@ -75,13 +75,12 @@ class Submission {
         this.statusDisplay = submissionDetail.statusDisplay;
         this.timestamp = submissionDetail.timestamp;
         this.code = submissionDetail.code;
-        this.sourceUrl = submissionDetail.sourceUrl;
+        this.sourceUrl = Helper.uris.submission.replace(
+            "$id",
+            this.id.toString()
+        );
 
         return this;
-    }
-
-    getSubmissionUrl(): string {
-        return Helper.uris.submission.replace("$id", this.id.toString());
     }
 }
 
