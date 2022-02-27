@@ -122,6 +122,7 @@ class Leetcode {
                 return new Problem(
                     p.stat.question__title_slug,
                     p.stat.question_id,
+                    p.stat.frontend_question_id,
                     p.stat.question__title,
                     undefined,
                     Helper.difficultyMap(p.difficulty.level),

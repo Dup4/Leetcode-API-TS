@@ -45,6 +45,7 @@ describe("# Problem", async function () {
 
     it("Should contain base field", () => {
         expect(problem.id).to.be.a("number");
+        expect(problem.frontendId).to.be.a("number");
         expect(problem.title).to.be.a("string");
         expect(problem.content).to.be.a("string");
         expect(problem.difficulty).to.be.oneOf([
@@ -87,7 +88,40 @@ describe("# Problem", async function () {
     });
 
     it("Could submit solution", async () => {
-        const submission = await problem.submit(LangSlug.cpp, "test code here");
+        const submission = await problem.submit(
+            LangSlug.cpp,
+            `
+class Solution {
+public:
+    ListNode *addTwoNumbers(ListNode *l1, ListNode *l2) {
+        ListNode *rt = new ListNode();
+        ListNode *pre = rt;
+
+        int remind = 0;
+        while (l1 != nullptr || l2 != nullptr || remind) {
+            int current = remind;
+
+            if (l1 != nullptr) {
+                current += l1->val;
+                l1 = l1->next;
+            }
+
+            if (l2 != nullptr) {
+                current += l2->val;
+                l2 = l2->next;
+            }
+
+            ListNode *cur = new ListNode(current % 10);
+            pre->next = cur;
+            pre = cur;
+
+            remind = current / 10;
+        }
+
+        return rt->next;
+    }
+};`
+        );
 
         setTimeout(async () => {
             await submission.detail();

@@ -14,6 +14,7 @@ class Problem {
     constructor(
         readonly slug: string,
         public id?: number,
+        public frontendId?: number,
         public title?: string,
         public categoryTitle?: string,
         public difficulty?: ProblemDifficulty,
@@ -47,6 +48,7 @@ class Problem {
                 query getQuestionDetail($titleSlug: String!) {
                     question(titleSlug: $titleSlug) {
                         questionId
+                        questionFrontendId
                         title
                         categoryTitle
                         difficulty
@@ -94,6 +96,7 @@ class Problem {
 
         const question = response.question;
         this.id = Number(question.questionId);
+        this.frontendId = Number(question.questionFrontendId);
         this.title = question.title;
         this.categoryTitle = question.categoryTitle;
         this.difficulty = Helper.difficultyMap(question.difficulty);
