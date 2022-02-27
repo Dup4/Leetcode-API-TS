@@ -177,6 +177,8 @@ class Problem {
                             runtime
                             timestamp
                             memory
+                            url
+                            isPending
                         }
                     }
                 }
@@ -201,7 +203,7 @@ class Problem {
                         s.statusDisplay,
                         Number(s.timestamp),
                         undefined,
-                        undefined
+                        Helper.uris.submission.replace("$id", s.id.toString())
                     )
                 );
             });
