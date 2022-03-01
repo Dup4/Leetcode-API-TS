@@ -86,7 +86,7 @@ export enum LangSlug {
 export const LangText: Record<LangSlug, string> = {
     [LangSlug.cpp]: "C++",
     [LangSlug.java]: "Java",
-    [LangSlug.python]: "Python",
+    [LangSlug.python]: "Python 2",
     [LangSlug.python3]: "Python 3",
     [LangSlug.c]: "C",
     [LangSlug.csharp]: "C#",
@@ -111,6 +111,7 @@ export function LangExt(langSlug: LangSlug): string {
         case LangSlug.java:
             return "java";
         case LangSlug.python:
+            return "py2";
         case LangSlug.python3:
             return "py";
         case LangSlug.c:
