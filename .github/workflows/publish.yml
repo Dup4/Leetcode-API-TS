@@ -21,11 +21,12 @@ jobs:
 
       - name: Install Node dependencies
         run: |
-          yarn
+          npm i -g pnpm @antfu/ni
+          ni
 
       - name: Build
         run: |
-          yarn build
+          nr build
 
       - uses: JS-DevTools/npm-publish@v1
         with:

@@ -25,8 +25,9 @@ jobs:
 
       - name: Install Node dependencies
         run: |
-          yarn
+          npm i -g pnpm @antfu/ni
+          ni
 
       - name: Build
         run: |
-          yarn build
+          nr build

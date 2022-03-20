@@ -1,0 +1,14 @@
+{
+    "editor.formatOnSave": true,
+    "cSpell.words": [
+        "camelcase",
+        "cherrio",
+        "csrfmiddlewaretoken",
+        "csrftoken",
+        "eqeqeq",
+        "leetcode",
+        "notac",
+        "Testcase",
+        "Testcases"
+    ]
+}
