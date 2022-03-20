@@ -1,6 +1,6 @@
 {
     "name": "leetcode-api-typescript",
-    "version": "1.11.0",
+    "version": "1.11.1",
     "description": "Leetcode api with typescript and full async",
     "keywords": [
         "typescript",
@@ -49,7 +49,6 @@
         "chai": "^4.3.6",
         "class-validator": "^0.13.2",
         "eslint": "^8.11.0",
-        "eslint-config-google": "^0.14.0",
         "mocha": "^9.2.2",
         "nyc": "^15.1.0",
         "ts-node": "^10.7.0",
