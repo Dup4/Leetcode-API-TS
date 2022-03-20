@@ -14,6 +14,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - uses: pnpm/action-setup@v2.1.0
+        with:
+          version: latest
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -22,12 +26,11 @@ jobs:
 
       - name: Install Node dependencies
         run: |
-          npm i -g pnpm @antfu/ni
-          ni
+          pnpm i
 
       - name: Build
         run: |
-          nr build
+          pnpm build
 
       - uses: JS-DevTools/npm-publish@v1
         with:
