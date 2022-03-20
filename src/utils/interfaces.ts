@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface HttpRequestOptions {
     method?: string;
     url: string;

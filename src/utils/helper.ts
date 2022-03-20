@@ -70,6 +70,7 @@ class Helper {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     static async HttpRequest(options: HttpRequestOptions): Promise<any> {
         return await Request({
             method: options.method || "GET",
@@ -90,6 +91,7 @@ class Helper {
         });
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     static async GraphQLRequest(options: GraphQLRequestOptions): Promise<any> {
         const client = new GraphQLClient(Helper.uris.graphql, {
             headers: {

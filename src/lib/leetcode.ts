@@ -96,8 +96,10 @@ class Leetcode {
         };
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     async getProfile(): Promise<any> {
         // TODO: fetch more user profile.
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const response: any = await Helper.GraphQLRequest({
             query: `
             {
@@ -118,6 +120,7 @@ class Leetcode {
 
         response = JSON.parse(response);
         const problems: Array<Problem> = response.stat_status_pairs.map(
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (p: any) => {
                 return new Problem(
                     p.stat.question__title_slug,
@@ -170,7 +173,9 @@ class Leetcode {
         });
 
         const problems: Array<Problem> = response.topicTag.questions.map(
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             (p: any) => {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 const stat: any = JSON.parse(p.stats);
                 return new Problem(
                     p.titleSlug,
@@ -182,6 +187,7 @@ class Leetcode {
                     undefined,
                     undefined,
                     Helper.statusMap(p.status),
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     p.topicTags.map((t: any) => t.slug),
                     stat.totalAcceptedRaw,
                     stat.totalSubmissionRaw,

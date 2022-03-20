@@ -1,22 +1,5 @@
 {
-    "root": true,
-    "env": {
-        "es6": true,
-        "node": true
-    },
-    "parser": "@typescript-eslint/parser",
     "extends": [
         "plugin:@typescript-eslint/recommended"
-    ],
-    "parserOptions": {
-        "sourceType": "module"
-    },
-    "rules": {
-        "semi": "error",
-        "eqeqeq": [
-            "error",
-            "always"
-        ],
-        "@typescript-eslint/no-explicit-any": "off"
-    }
+    ]
 }

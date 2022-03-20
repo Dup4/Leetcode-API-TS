@@ -46,6 +46,7 @@ describe("# Leetcode", () => {
         });
 
         it("Could get profile", async () => {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const profile: any = await leetcode.getProfile();
             expect(profile.username).to.not.null;
         });

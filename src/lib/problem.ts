@@ -106,6 +106,7 @@ class Problem {
         this.dislikes = question.dislikes;
         this.status = Helper.statusMap(question.status);
         this.tag = question.topicTags;
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const stats: any = JSON.parse(question.stats);
         this.totalAccepted = stats.totalAcceptedRaw;
         this.totalSubmission = stats.totalSubmissionRaw;
@@ -133,6 +134,7 @@ class Problem {
         const getImg = async (htmlContent: string, mp: Map<string, string>) => {
             const $ = cherrio.load(htmlContent);
 
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             $("img").each((ix: number, e: any) => {
                 mp.set($(e).attr("src") as string, "");
             });
@@ -191,6 +193,7 @@ class Problem {
             });
 
             hasNext = response.submissionList.hasNext;
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             const submission: Array<any> = response.submissionList.submissions;
             offset += submission.length;
             submission.map((s) => {

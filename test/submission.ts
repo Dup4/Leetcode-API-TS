@@ -54,6 +54,5 @@ describe("# Submission", async function () {
         expect(submission.statusDisplay).to.be.a("string");
         expect(submission.timestamp).to.be.an("number");
         expect(submission.code).to.be.a("string");
-        expect(submission.getSubmissionUrl()).to.be.a("string");
     });
 });

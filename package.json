@@ -1,6 +1,6 @@
 {
     "name": "leetcode-api-typescript",
-    "version": "1.10.6",
+    "version": "1.11.0",
     "description": "Leetcode api with typescript and full async",
     "keywords": [
         "typescript",
@@ -26,7 +26,7 @@
     "scripts": {
         "prepare": "ts-patch install -s",
         "build": "rm -rf dist && tsc -p tsconfig.json && tsc -p tsconfig-esm.json",
-        "start": "node dist/cjs",
+        "dev": "node dist/cjs",
         "lint": "eslint src --ext .ts",
         "test": "mocha -r ts-node/register test/**/*.ts --timeout 10000"
     },
