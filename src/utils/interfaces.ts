@@ -182,3 +182,13 @@ export interface Uris {
     submit: string;
     submission: string;
 }
+
+export interface OutputDetail {
+    codeOutput: string;
+    expectedOutput: string;
+    input: string;
+    compileError: string;
+    runtimeError: string;
+    lastTestcase: string;
+    __typename: string;
+}

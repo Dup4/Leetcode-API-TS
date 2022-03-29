@@ -54,5 +54,19 @@ describe("# Submission", async function () {
         expect(submission.statusDisplay).to.be.a("string");
         expect(submission.timestamp).to.be.an("number");
         expect(submission.code).to.be.a("string");
+        expect(submission.passedTestCaseCnt).to.be.an("number");
+        expect(submission.totalTestCaseCnt).to.be.an("number");
+        expect(submission.sourceUrl).to.be.a("string");
+
+        expect(submission.outputDetail.codeOutput).to.be.an("string");
+        expect(submission.outputDetail.expectedOutput).to.be.an("string");
+        expect(submission.outputDetail.input).to.be.an("string");
+        expect(submission.outputDetail.compileError).to.be.an("string");
+        expect(submission.outputDetail.runtimeError).to.be.an("string");
+        expect(submission.outputDetail.lastTestcase).to.be.an("string");
+        expect(submission.outputDetail.__typename).to.be.equal("SubmissionOutputNode");
+        
+        
+
     });
 });

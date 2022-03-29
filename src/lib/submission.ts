@@ -1,4 +1,5 @@
 import Helper from "@/utils/helper";
+import { OutputDetail } from "@/utils/interfaces";
 
 class Submission {
     constructor(
@@ -9,7 +10,10 @@ class Submission {
         public statusDisplay?: string,
         public timestamp?: number,
         public code?: string,
-        public sourceUrl?: string
+        public sourceUrl?: string,
+        public passedTestCaseCnt?: number,
+        public totalTestCaseCnt?: number,
+        public outputDetail?: OutputDetail
     ) {}
 
     static async build(id: number): Promise<Submission> {
@@ -79,6 +83,9 @@ class Submission {
             "$id",
             this.id.toString()
         );
+        this.passedTestCaseCnt = submissionDetail.passedTestCaseCnt;
+        this.totalTestCaseCnt = submissionDetail.totalTestCaseCnt;
+        this.outputDetail = submissionDetail.outputDetail;
 
         return this;
     }
