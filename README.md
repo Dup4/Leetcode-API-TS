@@ -9,6 +9,7 @@
 [![GitHub package.json dynamic](https://img.shields.io/github/package-json/keywords/Dup4/Leetcode-API-TS)][leetcode-api-typescript]
 [![GitHub package.json version](https://img.shields.io/github/package-json/v/Dup4/Leetcode-API-TS)][leetcode-api-typescript]
 [![Build](https://github.com/Dup4/Leetcode-API-TS/actions/workflows/build.yml/badge.svg)](https://github.com/Dup4/Leetcode-API-TS/actions/workflows/build.yml)
+[![Lint](https://github.com/Dup4/Leetcode-API-TS/actions/workflows/lint.yml/badge.svg)](https://github.com/Dup4/Leetcode-API-TS/actions/workflows/lint.yml)
 
 ## Install
 
