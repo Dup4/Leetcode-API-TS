@@ -12,19 +12,20 @@
 
 ## Install
 
-* npm: `npm i leetcode-api-typescript`
-* yarn: `yarn add leetcode-api-typescript`
+-   npm: `npm i leetcode-api-typescript`
+-   yarn: `yarn add leetcode-api-typescript`
 
 ## Usage
 
 ```typescript
 (async (): Promise<void> => {
-
     // Login
     const leetcode: Leetcode = await Leetcode.build(
-        "your username",
-        "your password",
-        EndPoint.US     // or EndPoint.CN
+        EndPoint.US, // or EndPoint.CN
+        {
+            username: "your username",
+            password: "your password",
+        }
     );
 
     // Get a special problem
@@ -50,17 +51,17 @@
     });
 
     acceptedProblems.forEach(async (problem: Problem) => {
-
         // Get all submissions
         const submissions: Array<Submission> = await problem.getSubmissions();
 
         // Filter submission which lang = cpp
-        const cppSubmissions: Array<Submission> = submissions.filter((s: Submission) => {
-            return s.lang === "cpp";
-        });
+        const cppSubmissions: Array<Submission> = submissions.filter(
+            (s: Submission) => {
+                return s.lang === "cpp";
+            }
+        );
 
         submissions.forEach((submission: Submission) => {
-
             // Get submission's status
             const code: string = await submission.detail();
 
@@ -76,23 +77,23 @@ I especially recommend you fetch base properties first because of the large numb
 
 ## TODO
 
-* [X] ~~*Support Leetcode CN.*~~ [2019-08-24]
-* [ ] Fetch more user profile.
-* [ ] Fully parse submission status type.
-* [ ] Support problems filter by categories.
-* [ ] Support problems filter by companies.
+-   [x] ~~_Support Leetcode CN._~~ [2019-08-24]
+-   [ ] Fetch more user profile.
+-   [ ] Fully parse submission status type.
+-   [ ] Support problems filter by categories.
+-   [ ] Support problems filter by companies.
 
 ## Test
 
-* `mv .env.example .env`
-* Update your leetcode account in `.env`
-* `yarn test`.
+-   `mv .env.example .env`
+-   Update your leetcode account in `.env`
+-   `yarn test`.
 
 ## Contribute
 
-* start: `yarn start`
-* build: `yarn build`
-* lint: `yarn lint`
+-   start: `yarn start`
+-   build: `yarn build`
+-   lint: `yarn lint`
 
 ## License
 
