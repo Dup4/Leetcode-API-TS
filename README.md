@@ -14,6 +14,7 @@
 
 * npm: `npm i leetcode-api-typescript`
 * yarn: `yarn add leetcode-api-typescript`
+* pnpm: `pnpm i leetcode-api-typescript`
 
 ## Usage
 
@@ -84,15 +85,15 @@ I especially recommend you fetch base properties first because of the large numb
 
 ## Test
 
-* `mv .env.example .env`
+* `cp .env.example .env`
 * Update your leetcode account in `.env`
-* `yarn test`.
+* `pnpm test`.
 
 ## Contribute
 
-* start: `yarn start`
-* build: `yarn build`
-* lint: `yarn lint`
+* start: `pnpm start`
+* build: `pnpm build`
+* lint: `pnpm lint`
 
 ## License
 
